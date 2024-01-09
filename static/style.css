@@ -1,0 +1,28 @@
+html {
+  background-color: whitesmoke;
+  text-align: center;
+}
+#search {
+  input[type="text"] {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  input[type="submit"] {
+    height: 40px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 15px;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  /*https://jp-seemore.com/web/2473/#toc3丸ごと引っ張ってきた*/
+}

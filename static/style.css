@@ -2,13 +2,20 @@ html {
   background-color: whitesmoke;
   text-align: center;
 }
-#search {
+a:visited {
+  color: black;
+}
+a {
+  text-decoration: none;
+}
+.search {
   input[type="text"] {
     width: 300px;
     height: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
+    margin-bottom: 35px;
   }
 
   input[type="submit"] {
@@ -25,4 +32,16 @@ html {
     background-color: #45a049;
   }
   /*https://jp-seemore.com/web/2473/#toc3丸ごと引っ張ってきた*/
+}
+.article-container {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.article img {
+  height: 80px;
 }

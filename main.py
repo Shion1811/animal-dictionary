@@ -1,16 +1,15 @@
-from fastapi import FastAPI, Response
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI
 
-class StatiFilesNoCache(StaticFiles):
-    def file_response(self, *args, **kwargs) -> Response:
-        response = super().file_response(*args, **kwargs)
-        response.headers["Cache-Contorol"] = "no-cache"
-        return response
+from utils import StatiFilesNoCache
+
 
 app = FastAPI()
 
+# 静的ファイルを設定
+app.mount("/", StatiFilesNoCache(directory="static",html=True), name="static")
+app.mount("/img-data", StatiFilesNoCache(directory="img-data",html=True), name="static")
+
+# サーチページのサンプル
 @app.get("/search")
 def read_root():
     return {"page": "Search Page"}
-app.mount("/img-data", StaticFiles(directory="img-data",html=True), name="static")
-app.mount("/", StatiFilesNoCache(directory="static",html=True), name="static")

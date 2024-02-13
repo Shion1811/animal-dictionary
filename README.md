@@ -2,4 +2,4 @@
 
 ## はじめるには
 
-`uvicorn mian.app --reload`
+`uvicorn main:app --reload`

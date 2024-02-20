@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -26,6 +26,11 @@ async def read_words(request: Request):
 
 @app.get("/words/{word}", response_class=HTMLResponse)
 async def read_word(request: Request, word: str):
+    res = requests.get(f'https://animal-dictionary.microcms.io/api/v1/words?filters=word[equals]{word}', headers={
+        "X-MICROCMS-API-KEY": MICROCMS_API_KEY
+    }, timeout=60).json()
+    if len(res["contents"]) <= 0:
+        return "お探しの単語は見つかりませんでした"
     return templates.TemplateResponse(
         request=request, name="word.html", context={"word": word}
     )

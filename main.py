@@ -7,6 +7,7 @@ import os
 
 import requests
 from dotenv import load_dotenv
+import uvicorn
 
 from utils import StatiFilesNoCache
 
@@ -43,3 +44,6 @@ def read_root():
 # 静的ファイルを設定
 app.mount("/img-data", StatiFilesNoCache(directory="img-data",html=True), name="static")
 app.mount("/", StatiFilesNoCache(directory="static",html=True), name="static")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

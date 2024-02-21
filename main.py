@@ -30,7 +30,7 @@ async def read_word(request: Request, word: str):
         "X-MICROCMS-API-KEY": MICROCMS_API_KEY
     }, timeout=60).json()
     if len(res["contents"]) <= 0:
-        return "お探しの単語は見つかりませんでした"
+        return HTMLResponse("お探しの単語は見つかりませんでした", status_code=404)
     return templates.TemplateResponse(
         request=request, name="word.html", context={"word": word}
     )

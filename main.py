@@ -33,7 +33,7 @@ async def read_word(request: Request, word: str):
     if len(res["contents"]) <= 0:
         return HTMLResponse("お探しの単語は見つかりませんでした", status_code=404)
     return templates.TemplateResponse(
-        request=request, name="word.html", context={"word": word}
+        request=request, name="word.html", context={"word": word,"description": res["contents"][0]["description"]}
     )
 
 # サーチページのサンプル

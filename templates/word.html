@@ -6,23 +6,19 @@
     <link rel="stylesheet" href="/style.css" />
     <title>animal dictionary</title>
   </head>
-  <body>
+  <body class="word-page">
     <div>
       <h2>動物病気百科</h2>
     </div>
-    <div class="search">
-      <form action="/search" method="get">
-        <input type="text" name="query" placeholder="キーワードを入力" />
-        <input type="submit" value="検索" />
-      </form>
+    <div class="word-page-header">
+      <div class="search">
+        <form action="/search" method="get">
+          <input type="text" name="query" placeholder="キーワードを入力" />
+          <input type="submit" value="検索" />
+        </form>
+      </div>
+      <h1 class="word-page-title">病名: {{ word }}</h1>
     </div>
-    <h1>病名: {{ word }}</h1>
-    <p class="wordp">
-      寒くなり始めると卵詰まりが増える時期です。産卵時は副交感神経が優位でないので産道が弛緩しない。前もって保温すると発情しやすくなります。発情制御には調子を崩さない程度の温度を保ち、卵ができてしまったら冷やさないのが基本。
-    </p>
-    <h3>原因</h3>
-    <p class="wordp">
-      寒くなり始めて保温し始めると鳥が春が来たと勘違いして発情。そのまま卵ができて産卵しますが、いざ鳥が卵を産もうとしても気温が低く体温が冷えてしまった結果卵詰まりになってしまいます。鳥の体は寒さを感じると交感神経が優位になり体温を保持しようとしますが産卵にはふくこう副交感神経が優位となって体がリラックスしてないと産道が緩みません。だからと言って体が冷えないように飼い主さんが常に保温すると、結果とし発情して産卵になります。温度のバランスが、難しいですが、冬は体調を崩さない程度の温度を維持するのが理想。
-    </p>
+    {{ description | safe }}
   </body>
 </html>

@@ -38,9 +38,11 @@ async def read_word(request: Request, word: str):
 
 # サーチページのサンプル
 @app.get("/search")
-def read_root():
-    return {"page": "Search Page"}
-
+def read_root(word: str):
+    res = requests.get(f'https://animal-dictionary.microcms.io/api/v1/words?filters=word[contains]{word}', headers={
+        "X-MICROCMS-API-KEY": MICROCMS_API_KEY
+    }, timeout=60).json()
+    return res["contents"]
 # 静的ファイルを設定
 app.mount("/img-data", StatiFilesNoCache(directory="img-data",html=True), name="static")
 app.mount("/", StatiFilesNoCache(directory="static",html=True), name="static")

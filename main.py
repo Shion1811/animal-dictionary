@@ -18,6 +18,13 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    context={}
+    return templates.TemplateResponse(
+        request=request, name="index.html", context=context
+    )
+
 @app.get("/words", response_class=HTMLResponse)
 async def read_words(request: Request):
     res = requests.get('https://animal-dictionary.microcms.io/api/v1/words', headers={

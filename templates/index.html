@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css"
+    />
     <link rel="stylesheet" href="/global.css" />
     <title>animal dictionary</title>
   </head>
@@ -10,8 +14,17 @@
     <u><h1>動物病気百科</h1></u>
     <div class="search">
       <form action="/search" method="get">
-        <input type="text" name="word" placeholder="キーワードを入力" />
-        <input type="submit" value="検索" />
+        <div class="autoComplete_wrapper">
+          <input
+            id="autoComplete"
+            type="search"
+            dir="ltr"
+            spellcheck="false"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+          />
+        </div>
       </form>
     </div>
     <div class="article-container">
@@ -67,5 +80,34 @@
         <li></li>
       </ul>
     </div>
+    <body>
+      <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.js"></script>
+      <script>
+        const config = {
+          placeHolder: "Search for Food...",
+          data: {
+            src: [
+              "Sauce - Thousand Island",
+              "Wild Boar - Tenderloin",
+              "Goat - Whole Cut",
+            ],
+            cache: false,
+          },
+          resultItem: {
+            highlight: true,
+          },
+          events: {
+            input: {
+              selection: (event) => {
+                const selection = event.detail.selection.value;
+                autoCompleteJS.input.value = selection;
+              },
+            },
+          },
+        };
+
+        const autoCompleteJS = new autoComplete(config);
+      </script>
+    </body>
   </body>
 </html>

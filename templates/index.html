@@ -86,12 +86,19 @@
         const config = {
           placeHolder: "Search for Food...",
           data: {
-            src: [
-              "Sauce - Thousand Island",
-              "Wild Boar - Tenderloin",
-              "Goat - Whole Cut",
-            ],
-            cache: false,
+            src: async (query) => {
+              try {
+                // Fetch Data from external Source
+                const source = await fetch(`/search?word=${query}`);
+                // Data should be an array of `Objects` or `Strings`
+                const data = await source.json();
+
+                return data.map((item) => item.word);
+              } catch (error) {
+                return error;
+              }
+            },
+            //　cache: true,
           },
           resultItem: {
             highlight: true,
@@ -99,6 +106,8 @@
           events: {
             input: {
               selection: (event) => {
+                location.href = `/words/${event.detail.selection.value}`;
+                console.log(event);
                 const selection = event.detail.selection.value;
                 autoCompleteJS.input.value = selection;
               },

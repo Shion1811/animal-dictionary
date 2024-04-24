@@ -1,3 +1,13 @@
+@import url(global.css) screen and (min-width: 960px);
+@media and (width: 320px);
+.width {
+  background-color: white;
+}
+.link {
+  body {
+    font-size: 85%;
+  }
+}
 html {
   background-color: whitesmoke;
   text-align: center;

@@ -70,9 +70,6 @@ a {
 }
 
 @media screen and (max-width: 600px) {
-  body {
-    color: blue;
-  }
   .article-container {
     flex-direction: column;
   }

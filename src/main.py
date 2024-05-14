@@ -9,31 +9,28 @@ import requests
 from dotenv import load_dotenv
 import uvicorn
 
-from utils import StatiFilesNoCache
+from src.utils import StatiFilesNoCache
 
 load_dotenv()
 MICROCMS_API_KEY=os.environ.get("MICROCMS_API_KEY")
+
+if not MICROCMS_API_KEY:
+    print("このアプリの動作には、環境変数にMICROCMS_API_KEYが必要です")
+    raise Exception("Require MICROCMS_API_KEY")
 
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
-async def index(request: Request):
+async def index_page(request: Request):
     context={}
     return templates.TemplateResponse(
         request=request, name="index.html", context=context
     )
 
-@app.get("/words", response_class=HTMLResponse)
-async def read_words(request: Request):
-    res = requests.get('https://animal-dictionary.microcms.io/api/v1/words', headers={
-        "X-MICROCMS-API-KEY": MICROCMS_API_KEY
-    }, timeout=60)
-    return res.text
-
 @app.get("/words/{word}", response_class=HTMLResponse)
-async def read_word(request: Request, word: str):
+async def word_page(request: Request, word: str):
     res = requests.get(f'https://animal-dictionary.microcms.io/api/v1/words?filters=word[equals]{word}', headers={
         "X-MICROCMS-API-KEY": MICROCMS_API_KEY
     }, timeout=60).json()
@@ -43,13 +40,13 @@ async def read_word(request: Request, word: str):
         request=request, name="word.html", context={"word": word,"description": res["contents"][0]["description"]}
     )
 
-# サーチページのサンプル
-@app.get("/search")
-def read_root(word: str):
+@app.get("/api/search")
+def search_api(word: str):
     res = requests.get(f'https://animal-dictionary.microcms.io/api/v1/words?filters=word[contains]{word}', headers={
         "X-MICROCMS-API-KEY": MICROCMS_API_KEY
     }, timeout=60).json()
     return res["contents"]
+
 # 静的ファイルを設定
 app.mount("/img-data", StatiFilesNoCache(directory="img-data",html=True), name="static")
 app.mount("/", StatiFilesNoCache(directory="static",html=True), name="static")

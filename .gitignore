@@ -68,3 +68,4 @@ node_modules/
 # カスタマイズ
 .DS_Store
 .http
+__pycache__

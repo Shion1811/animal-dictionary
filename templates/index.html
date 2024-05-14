@@ -23,7 +23,7 @@
   <body>
     <u><h1>動物病気百科</h1></u>
     <div class="search">
-      <form action="/search" method="get">
+      <form id="search-form">
         <div class="autoComplete_wrapper">
           <input
             id="autoComplete"
@@ -99,7 +99,7 @@
             src: async (query) => {
               try {
                 // Fetch Data from external Source
-                const source = await fetch(`/search?word=${query}`);
+                const source = await fetch(`/api/search?word=${query}`);
                 // Data should be an array of `Objects` or `Strings`
                 const data = await source.json();
 
@@ -116,16 +116,23 @@
           events: {
             input: {
               selection: (event) => {
-                location.href = `/words/${event.detail.selection.value}`;
-                console.log(event);
                 const selection = event.detail.selection.value;
                 autoCompleteJS.input.value = selection;
+                location.href = `/words/${event.detail.selection.value}`;
               },
             },
           },
+          submit: true,
         };
 
         const autoCompleteJS = new autoComplete(config);
+        
+        document.getElementById("search-form").addEventListener("submit", e => {
+          e.preventDefault()
+
+          const input = document.querySelector("#search-form input")
+          location.href = `/words/${input.value}`
+        })
       </script>
     </body>
   </body>

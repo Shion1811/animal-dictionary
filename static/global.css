@@ -14,6 +14,8 @@ a {
   text-decoration: none;
 }
 .search {
+  margin-bottom: 40px;
+
   input[type="text"] {
     width: 300px;
     height: 40px;

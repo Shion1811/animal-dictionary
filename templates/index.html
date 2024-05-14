@@ -11,14 +11,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css"
     />
-    <link
-      class="link"
-      rel="stylesheet"
-      href="/global.css"
-      media="screen and (min-windth:960px)"
-    />
+    <link class="link" rel="stylesheet" href="/global.css" />
     <title>animal dictionary</title>
-    }
   </head>
   <body>
     <u><h1>動物病気百科</h1></u>
@@ -126,13 +120,15 @@
         };
 
         const autoCompleteJS = new autoComplete(config);
-        
-        document.getElementById("search-form").addEventListener("submit", e => {
-          e.preventDefault()
 
-          const input = document.querySelector("#search-form input")
-          location.href = `/words/${input.value}`
-        })
+        document
+          .getElementById("search-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const input = document.querySelector("#search-form input");
+            location.href = `/words/${input.value}`;
+          });
       </script>
     </body>
   </body>

@@ -1,8 +1,9 @@
-@import url(global.css) screen and (min-width: 960px);
-@media and (width: 320px);
-.width {
-  background-color: white;
+@media screen and (max-width: 600px) {
+  body {
+    color: blue;
+  }
 }
+
 .link {
   body {
     font-size: 85%;

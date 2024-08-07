@@ -199,6 +199,10 @@ header {
   list-style: none;
   padding: 0;
 }
+
+.header li {
+  font-size: 20px;
+}
 /* ハンバーガーメニュー実装できなかったやつ */
 /* .side_menu li {
   list-style: none;

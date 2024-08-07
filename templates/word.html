@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/global.css" />
+    <title>animal dictionary</title>
+  </head>
+  <body class="word-page">
+    <div>
+      <h2>動物病気百科</h2>
+    </div>
+    <div class="word-page-header">
+      <div class="search">
+        <form action="/search" method="get">
+          <input type="text" name="query" placeholder="キーワードを入力" />
+          <input type="submit" value="検索" />
+        </form>
+      </div>
+      <h1 class="word-page-title">病名: {{ word }}</h1>
+    </div>
+    {{ description | safe }}
+  </body>
+</html>

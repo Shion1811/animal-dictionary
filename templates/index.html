@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>animal dictionary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css"
+    />
+    <link class="link" rel="stylesheet" href="../static/global.css" />
+  </head>
+  <body>
+    <header class="position">
+      <div class="clearfix header_box">
+        <h1>動物病気百科</h1>
+        <!-- 検索窓 -->
+        <div class="search">
+          <form action="/search" method="get">
+            <div class="autoComplete_wrapper">
+              <input
+                id="autoComplete"
+                type="search"
+                dir="ltr"
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- ハンバーガーメニュー実装失敗 -->
+      <!-- <div class="all_hamburger_menu">
+        <div class="hamburger_menu">
+          spanタグはハンバーガーメニューの線
+          <span class="No_01"></span>
+          <span class="No_02"></span>
+          <span class="No_03"></span>
+        </div>
+        <div class="side_menu">
+          <ul>
+            <li>犬</li>
+            <li>猫</li>
+            <li>鳥</li>
+            <li>うさぎ</li>
+            <li>ハムスター</li>
+            <li>リス</li>
+            <li>魚</li>
+            <li>ヘビ</li>
+          </ul>
+        </div>
+      </div> -->
+    </header>
+    <div class="header">
+      <ul>
+        <li>犬</li>
+        <li>猫</li>
+        <li>鳥</li>
+      </ul>
+    </div>
+    <main>
+      <div class="comment">
+        <p>サイトの概要 コメント</p>
+      </div>
+      <div class="article-container">
+        <div class="article">
+          <img class="dog" src="../img-data/犬/31641.jpg" alt="" />
+          <p>犬</p>
+        </div>
+        <div class="article">
+          <img src="../img-data/猫/31671.jpg" alt="" />
+          <p>猫</p>
+        </div>
+        <div class="article">
+          <img src="../img-data/豚/7778.jpg" alt="" />
+          <p>豚</p>
+        </div>
+        <div class="article">
+          <img src="../img-data/鳥/31306.jpg" alt="" />
+          <p>鳥</p>
+        </div>
+        <div>
+          <img
+            class="lizard article"
+            src="../img-data/トカゲ/30833.jpg"
+            alt=""
+          />
+          <p>トカゲ</p>
+        </div>
+        <div>
+          <img class="fish article" src="../img-data/魚/30642.jpg" alt="" />
+          <p>魚</p>
+        </div>
+        <div>
+          <img
+            class="Rabbit article"
+            src="../img-data/うさぎ/7782.jpg"
+            alt=""
+          />
+          <p>うさぎ</p>
+        </div>
+      </div>
+      <div class="blog">
+        <ul>
+          <li class="blog1">ブログ1</li>
+          <li class="blog2">ブログ2</li>
+          <li class="blog3">ブログ3</li>
+          <li class="blog4">ブログ4</li>
+          <li class="blog5">ブログ5</li>
+          <li class="blog6">ブログ6</li>
+        </ul>
+      </div>
+      <div class="newAndFashion_list">
+        <div class="new_list">
+          <h2>更新した辞書</h2>
+          <ul>
+            <li>辞書1</li>
+            <li>辞書2</li>
+            <li>辞書3</li>
+            <li>辞書4</li>
+            <li>辞書5</li>
+            <li>辞書6</li>
+            <li>辞書7</li>
+          </ul>
+        </div>
+        <div class="fashion_list">
+          <h2>今流行ってる病気</h2>
+          <ul>
+            <li>病気1</li>
+            <li>病気2</li>
+            <li>病気3</li>
+            <li>病気4</li>
+            <li>病気5</li>
+            <li>病気6</li>
+            <li>病気7</li>
+          </ul>
+        </div>
+      </div>
+      <!-- ↓↓↓↓下のコードは一旦無し↓↓↓↓ -->
+      <!-- <div class="dictionary-container">
+      <hr />
+      <ul>
+        <li>
+          <a href="/words/卵詰まり">卵詰まり</a>
+        </li>
+        <li>
+          <a href="/words/熱中症">熱中症</a>
+        </li>
+        <li>
+          <a href="/words/鼻炎">鼻炎</a>
+        </li>
+        <li>
+          <a href="/words/メガバクテリア症">メガバクテリア症</a>
+        </li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div> -->
+    </main>
+
+    <footer></footer>
+    <!-- JQeury -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- 検索バーのコード -->
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.js"></script>
+    <script>
+      const config = {
+        placeHolder: "Search for Food...",
+        data: {
+          src: async (query) => {
+            try {
+              // Fetch Data from external Source
+              const source = await fetch(`/search?word=${query}`);
+              // Data should be an array of `Objects` or `Strings`
+              const data = await source.json();
+
+              return data.map((item) => item.word);
+            } catch (error) {
+              return error;
+            }
+          },
+          //cache: true,
+        },
+        resultItem: {
+          highlight: true,
+        },
+        events: {
+          input: {
+            selection: (event) => {
+              location.href = `/words/${event.detail.selection.value}`;
+              console.log(event);
+              const selection = event.detail.selection.value;
+              autoCompleteJS.input.value = selection;
+            },
+          },
+        },
+      };
+      const autoCompleteJS = new autoComplete(config);
+
+      $(document).ready(function () {
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 90) {
+            $(".header").css("display", "flex");
+          } else {
+            $(".header").css("display", "none");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

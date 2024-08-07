@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "app",
+          "region": "asia-northeast1",
+          "pinTag": false
+        }
+      }
+    ]
+  }
+}

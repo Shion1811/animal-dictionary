@@ -1,0 +1,225 @@
+@import url(global.css) screen and (min-width: 960px);
+@media screen and (min-width: 960px) {
+  p {
+    color: #ccc;
+  }
+}
+@media (max-width: 960px) {
+  p {
+    color: #4caf50;
+  }
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.width {
+  background-color: white;
+}
+.link {
+  body {
+    font-size: 85%;
+  }
+}
+html {
+  background-color: whitesmoke;
+  text-align: center;
+}
+a:visited {
+  color: black;
+}
+a {
+  text-decoration: none;
+}
+.search {
+  input[type="text"] {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 35px;
+  }
+}
+input[type="submit"] {
+  height: 40px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+/*https://jp-seemore.com/web/2473/#toc3丸ごと引っ張ってきた*/
+.article-container {
+  display: flex;
+  text-align: center;
+  margin: 40px 200px;
+}
+.article-container ul {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.article {
+  padding: 0 40px 0 0;
+}
+.dictionary-container {
+  margin-top: 180px;
+}
+.ord-page p {
+  max-width: 600px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  font-size: 20px;
+  line-height: 50px;
+}
+.word-page-header {
+  position: sticky;
+  top: 0px;
+  background-color: white;
+}
+.header_box {
+  position: relative;
+}
+.header_box {
+  position: relative;
+}
+.header_box h1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+h1 {
+  font-size: 40px;
+}
+.search {
+  float: right;
+  padding-right: 200px;
+  display: inline;
+}
+.comment {
+  margin: 50px 200px;
+  padding: 60px;
+  background-color: skyblue;
+  display: block;
+}
+.blog {
+  margin: 40px 200px;
+  overflow-x: auto;
+}
+.blog ul {
+  display: flex inline;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.blog li {
+  list-style: none;
+  margin: auto 20px auto 0;
+  width: 250px;
+  height: 200px;
+  background-color: #ccc;
+}
+.newAndFashion_list {
+  margin: 40px 200px;
+  display: flex;
+  justify-content: space-between;
+}
+.new_list {
+  background-color: #4caf50;
+  width: 600px;
+  height: 400px;
+}
+.new_list li {
+  list-style: none;
+  border-bottom: black solid;
+  width: fit-content;
+  margin: 0 auto;
+  top: 40px;
+}
+.fashion_list {
+  background-color: aqua;
+  width: 600px;
+  height: 400px;
+}
+.fashion_list li {
+  list-style: none;
+  border-bottom: black solid;
+  width: fit-content;
+  margin: 0 auto;
+}
+.article img {
+  width: 150px;
+  height: 150px;
+}
+.lizard {
+  width: 150px;
+  height: 150px;
+}
+.fish {
+  width: 150px;
+  height: 150px;
+}
+.Rabbit {
+  width: 150px;
+  height: 150px;
+}
+.position {
+  width: 100%;
+  height: 70px;
+}
+header {
+  background-color: whitesmoke;
+  padding: 1% 0;
+}
+
+.header {
+  display: none; /* flexboxを使用 */
+  justify-content: center; /* 中央揃え */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+}
+.header ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+/* ハンバーガーメニュー実装できなかったやつ */
+/* .side_menu li {
+  list-style: none;
+}
+.hamburger_menu {
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  background-color: #45a049;
+  float: right;
+  margin-right: 50px;
+  margin-top: -60px;
+}
+.hamburger_menu span {
+  display: inline-block;
+  transition: all 4s;
+  width: 20px;
+  height: 3px;
+  border-radius: 5px;
+  background-color: black;
+}
+.No_01 {
+  position: relative;
+} */
